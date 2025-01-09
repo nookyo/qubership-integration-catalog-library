@@ -357,7 +357,7 @@
                     <additionalOptions>
                         <additionalOption>-Xdoclint:none</additionalOption>
                     </additionalOptions>
-                </configuration>     
+                </configuration>   
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
