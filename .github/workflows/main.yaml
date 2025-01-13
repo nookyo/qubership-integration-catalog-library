@@ -14,7 +14,7 @@ jobs:
   #     - name: docker tags
   #       run: echo "docker_tag = ${{ needs.setup-tag.outputs.tag }}"
 
-  build-app:
+  update-pom:
     # needs: setup-tag
     uses: nookyo/workflow-hub/.github/workflows/update-pom.yml@main    
     with:
