@@ -18,7 +18,7 @@ on:
           type: string
           default: "21"  
 jobs:
-  update:
+  pom_update:
     uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
     with:
       file: pom.xml
@@ -26,7 +26,7 @@ jobs:
 
   git_release:
     uses:  nookyo/workflow-hub/.github/workflows/create-github-release.yml@main
-    needs: update
+    needs: pom_update
     with:
       revision: ${{ github.event.inputs.revision }}
       release_info: ${{ github.event.inputs.release_info }}
