@@ -41,7 +41,7 @@ jobs:
       java_version: "21"
       server_id: ${{ github.event.inputs.server_id }}
     secrets:
-      maven_username: ${{ secrets.maven_username }}
-      maven_password: ${{ secrets.maven_password }}
-      maven_gpg_private_key: ${{ secrets.maven_gpg_private_key }}
-      maven_gpg_passphrase: ${{ secrets.maven_gpg_passphrase }}
+      maven_username: ${{ secrets.OSSRH_USERNAME }}
+      maven_password: ${{ secrets.OSSRH_TOKEN }}
+      maven_gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      maven_gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
