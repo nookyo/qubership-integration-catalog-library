@@ -11,15 +11,15 @@ on:
           type: string  
 
 jobs:
-  update-version-on-pom:
+  update:
     uses: nookyo/workflow-hub/.github/workflows/update-and-commit-pom.yml@main
     with:
       file: pom.xml
       revision: ${{ github.event.inputs.revision }}
 
-  create-github-release:
+  release:
     uses:  nookyo/workflow-hub/.github/workflows/create-github-release.yml@main
-    needs: update-version-on-pom
+    needs: update
     with:
       revision: ${{ github.event.inputs.revision }}
       release_info: ${{ github.event.inputs.release_info }}
