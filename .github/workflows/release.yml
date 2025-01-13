@@ -8,7 +8,11 @@ on:
           type: string
         release_info:
           required: false
-          type: string  
+          type: string
+        server_id:
+          required: false
+          type: string
+          default: "central"
 jobs:
   update:
     uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
@@ -16,7 +20,7 @@ jobs:
       file: pom.xml
       revision: ${{ github.event.inputs.revision }}
 
-  release:
+  git_release:
     uses:  nookyo/workflow-hub/.github/workflows/create-github-release.yml@main
     needs: update
     with:
@@ -24,3 +28,16 @@ jobs:
       release_info: ${{ github.event.inputs.release_info }}
       draft: false
       prerelease: false
+
+  maven:
+    uses: nookyo/workflow-hub/.github/workflows/maven-publish.yml@main
+    needs: git_release
+    with:
+      maven_command: "--batch-mode deploy"
+      java_version: "21"
+      server_id: ${{ github.event.inputs.server_id }}
+    secrets:
+      maven_username: ${{ secrets.maven_username }}
+      maven_password: ${{ secrets.maven_password }}
+      maven_gpg_private_key: ${{ secrets.maven_gpg_private_key }}
+      maven_gpg_passphrase: ${{ secrets.maven_gpg_passphrase }}
