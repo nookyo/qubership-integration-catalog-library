@@ -12,14 +12,14 @@ jobs:
     needs: setup-tag
     steps:
       - name: docker tags
-        run: echo "docker_tag = ${{ needs.setup-tag.outputs.docker_tag }}"
+        run: echo "docker_tag = ${{ needs.setup-tag.outputs.tag }}"
 
   build-app:
     needs: setup-tag
     uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
     with:
-      artifact_name: qip-catalog-library
-      artifact_path: target/qip-catalog-library-*-exec.jar 
+      # artifact_name: qip-catalog-library
+      # artifact_path: target/qip-catalog-library-*-exec.jar 
       maven_command: "--batch-mode deploy"
     secrets:
       maven_username: ${{ secrets.OSSRH_USERNAME }}
