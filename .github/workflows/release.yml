@@ -1,0 +1,27 @@
+name: Main Workflow
+
+on:
+   workflow_dispatch:
+    inputs:
+        revision:
+          required: false
+          type: string
+        release_info:
+          required: false
+          type: string  
+
+jobs:
+  update-version-on-pom:
+    uses: nookyo/workflow-hub/.github/workflows/update-and-commit.yml@main
+    with:
+      file: pom.xml
+      revision: ${{ github.event.inputs.revision }}
+
+  create-github-release:
+    uses:  nookyo/workflow-hub/.github/workflows/create-release.yml@main
+    needs: update-version-on-pom
+    with:
+      revision: ${{ github.event.inputs.revision }}
+      release_info: ${{ github.event.inputs.release_info }}
+      draft: false
+      prerelease: false
