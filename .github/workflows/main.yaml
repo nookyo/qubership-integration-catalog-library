@@ -4,19 +4,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-tag:
-    uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main
+  # setup-tag:
+  #   uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main
 
-  debug-docker-tag:
-    runs-on: ubuntu-latest
-    needs: setup-tag
-    steps:
-      - name: docker tags
-        run: echo "docker_tag = ${{ needs.setup-tag.outputs.tag }}"
+  # debug-docker-tag:
+  #   runs-on: ubuntu-latest
+  #   needs: setup-tag
+  #   steps:
+  #     - name: docker tags
+  #       run: echo "docker_tag = ${{ needs.setup-tag.outputs.tag }}"
 
   build-app:
-    needs: setup-tag
+    # needs: setup-tag
     uses: nookyo/workflow-hub/.github/workflows/update-pom.yml@main    
+    with:
+      version: ""
 
     # uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
     # with:
