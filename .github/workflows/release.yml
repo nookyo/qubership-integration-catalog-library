@@ -1,4 +1,4 @@
-name: Release Workflow
+name: CIP Release Workflow
 
 on:
    workflow_dispatch:
@@ -9,7 +9,6 @@ on:
         release_info:
           required: false
           type: string  
-
 jobs:
   update:
     uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
