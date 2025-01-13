@@ -13,6 +13,10 @@ on:
           required: false
           type: string
           default: "central"
+        java_version:
+          required: false
+          type: string
+          default: "21"  
 jobs:
   update:
     uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
