@@ -12,7 +12,7 @@ on:
 
 jobs:
   update:
-    uses: nookyo/workflow-hub/.github/workflows/update-and-commit-pom.yml@main
+    uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
     with:
       file: pom.xml
       revision: ${{ github.event.inputs.revision }}
