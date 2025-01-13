@@ -19,17 +19,17 @@ jobs:
 
   update-pom:
     # needs: setup-tag
-    uses: nookyo/workflow-hub/.github/workflows/update-pom.yml@main    
-    with:
-      version: ${{ github.event.inputs.version }}
-
-    # uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
+    # uses: nookyo/workflow-hub/.github/workflows/update-pom.yml@main    
     # with:
-    #   # artifact_name: qip-catalog-library
-    #   # artifact_path: target/qip-catalog-library-*-exec.jar 
-    #   maven_command: "--batch-mode deploy"
-    # secrets:
-    #   maven_username: ${{ secrets.OSSRH_USERNAME }}
-    #   maven_password: ${{ secrets.OSSRH_TOKEN }}
-    #   maven_gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
-    #   maven_gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+    #   version: ${{ github.event.inputs.version }}
+
+    uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
+    with:
+      # artifact_name: qip-catalog-library
+      # artifact_path: target/qip-catalog-library-*-exec.jar 
+      maven_command: "--batch-mode deploy"
+    secrets:
+      maven_username: ${{ secrets.OSSRH_USERNAME }}
+      maven_password: ${{ secrets.OSSRH_TOKEN }}
+      maven_gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      maven_gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
