@@ -2,7 +2,10 @@ name: Main Workflow
 
 on:
   workflow_dispatch:
-
+    inputs:
+      version:
+        required: false
+        type: string
 jobs:
   # setup-tag:
   #   uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main
@@ -18,7 +21,7 @@ jobs:
     # needs: setup-tag
     uses: nookyo/workflow-hub/.github/workflows/update-pom.yml@main    
     with:
-      version: ""
+      version: ${{ github.event.inputs.version }}
 
     # uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
     # with:
