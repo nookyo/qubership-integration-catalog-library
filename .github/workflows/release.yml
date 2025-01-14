@@ -30,29 +30,29 @@ jobs:
       draft: false
       prerelease: false
 
-  # release_notes:
-  #   needs: git_release
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-
-  #     - uses: release-drafter/release-drafter@v5
-  #       with:
-  #         config-name: .github/release-drafter.yml
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  maven:
-    uses: nookyo/workflow-hub/.github/workflows/maven-publish.yml@main
+  release_notes:
     needs: git_release
-    with:
-      maven_command: "--batch-mode deploy"
-      java_version: "21"
-      revision: ${{ github.event.inputs.revision }}
-    secrets:
-      maven_username: ${{ secrets.OSSRH_USERNAME }}
-      maven_password: ${{ secrets.OSSRH_TOKEN }}
-      maven_gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      maven_gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: release-drafter/release-drafter@v5
+        with:
+          config-name: .github/release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # maven:
+  #   uses: nookyo/workflow-hub/.github/workflows/maven-publish.yml@main
+  #   needs: git_release
+  #   with:
+  #     maven_command: "--batch-mode deploy"
+  #     java_version: "21"
+  #     revision: ${{ github.event.inputs.revision }}
+  #   secrets:
+  #     maven_username: ${{ secrets.OSSRH_USERNAME }}
+  #     maven_password: ${{ secrets.OSSRH_TOKEN }}
+  #     maven_gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+  #     maven_gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
