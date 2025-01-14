@@ -1,14 +1,26 @@
-name-template: 'Release v{{version}}'
-tag-template: 'v{{version}}'
+.github/release-drafter.yml:
+
+name-template: 'Release v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
 categories:
   - title: 🚀 Features
     labels:
       - feature
-  - title: 🐛 Bug Fixes
-    labels:
-      - fix
   - title: 🛠 Maintenance
     labels:
       - chore
-change-template: '- {{message}} ([#{{number}}]({{url}}))'
-no-changes-template: 'No changes in this release.'
+  - title: 🛠️ Bug Fixes
+    labels:
+      - bug
+change-template: '- $TITLE (#$NUMBER by @$AUTHOR)'
+template: |
+  ## Changes
+
+  ### 🚀 Features
+  $CHANGES
+
+  ### 🛠️ Maintenance
+  $CHANGES
+
+  ### 🛠️ Bug Fixes
+  $CHANGES
