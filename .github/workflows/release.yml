@@ -40,7 +40,6 @@ jobs:
       maven_command: "--batch-mode deploy"
       java_version: "21"
       revision: ${{ github.event.inputs.revision }}
-    #   server_id: ${{ github.event.inputs.server_id }}
     secrets:
       maven_username: ${{ secrets.OSSRH_USERNAME }}
       maven_password: ${{ secrets.OSSRH_TOKEN }}
