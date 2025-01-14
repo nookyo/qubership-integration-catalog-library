@@ -9,10 +9,6 @@ on:
         release_info:
           required: false
           type: string
-        server_id:
-          required: false
-          type: string
-          default: "central"
         java_version:
           required: false
           type: string
