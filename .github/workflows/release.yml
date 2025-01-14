@@ -31,17 +31,14 @@ jobs:
       prerelease: false
 
   release_notes:
-    name: Generate Release Notes
     needs: git_release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Draft release notes
-        uses: release-drafter/release-drafter@v5
+      - uses: release-drafter/release-drafter@v5
         with:
           config-name: .github/release-drafter.yml
         env:
