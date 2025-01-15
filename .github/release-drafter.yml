@@ -1,5 +1,5 @@
 name-template: 'Release v$RESOLVED_VERSION'
-tag-template: 'v$env.VERSION'
+tag-template: 'v$VERSION'
 categories:
   - title: '🚀 New Features'
     labels:
