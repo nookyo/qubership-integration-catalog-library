@@ -1,32 +1,15 @@
 name-template: 'Release v{{version}}'
 tag-template: 'v{{version}}'
 categories:
-  - title: '🚀 Features'
+  - title: '🚀 New Features'
     labels:
       - 'feature'
   - title: '🐛 Bug Fixes'
     labels:
       - 'bug'
-  - title: '🛠️ Maintenance'
-    labels:
-      - 'maintenance'
-change-template: '- $TITLE (#$NUMBER by @$AUTHOR)'
-
-template: |
-  ## Changes
-
-  ### 🚀 Features
-  $CHANGES_FOR_CATEGORY_🚀_Features
-
-  ### 🛠️ Maintenance
-  $CHANGES_FOR_CATEGORY_🛠️_Maintenance
-
-  ### 🐛 Bug Fixes
-  $CHANGES_FOR_CATEGORY_🐛_Bug_Fixes
-
+change-template: '- {{change}}'
 no-changes-template: 'No changes in this release.'
-
 version-resolver:
   custom:
-    value: ${{ env.VERSION }}  # Используем переменную окружения
+    value: ${{ env.VERSION }}  # Используется переменная из workflow
 draft: false
