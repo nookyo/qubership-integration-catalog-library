@@ -9,7 +9,18 @@ categories:
       - 'bug'
 change-template: '- {{change}}'
 no-changes-template: 'No changes in this release.'
+version-template: '$MAJOR.$MINOR.$PATCH$PRERELEASE'
 version-resolver:
-  custom:
-    value: ${{ env.VERSION }}  # Используется переменная из workflow
+  major: { labels: [] }
+  minor: { labels: [] }
+  patch: { labels: [] }
+  default: 'patch'
+  custom: { value: '${{ env.VERSION }}' }
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+  **Contributors**:
+  $CONTRIBUTORS
 draft: false
