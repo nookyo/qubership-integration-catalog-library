@@ -1,22 +1,14 @@
-name-template: 'Release v${{ env.VERSION }}'
-tag-template: 'v${{ env.VERSION }}'
-version-resolver:
-  custom:
-    value: ${{ env.VERSION }}
+name-template: 'Release v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
 categories:
   - title: '🚀 New Features'
     labels:
-      - 'feature'
+      - feature
   - title: '🐛 Bug Fixes'
     labels:
-      - 'bug'
-change-template: '- {{text}} (#{{number}} by @{{author}})'
-no-changes-template: 'No changes in this release.'
-template: |
-  ## What's Changed
-
-  $CHANGES
-
-  **Contributors**:
-  $CONTRIBUTORS
-draft: false
+      - bugfix
+  - title: '🛠️ Technical Debt'
+    labels:
+      - refactor
+change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
+no-changes-template: 'No significant changes'

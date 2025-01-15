@@ -1,44 +1,76 @@
-name: Release
+name: Release Drafter with Dynamic Version
 
 on:
   workflow_dispatch:
     inputs:
-      revision:
-        required: false
-        type: string
-      release_info:
-        required: false
-        type: string
-      java_version:
-        required: false
-        type: string
-        default: "21"
+      version:
+        description: 'Custom release version'
+        required: true
+        default: '1.0.0'
 
 jobs:
-  pom:
-    uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
-    with:
-      file: pom.xml
-      revision: ${{ github.event.inputs.revision }}
-      
-  release:
+  draft-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set version for Release Drafter
-        run: echo "VERSION=${{ github.event.inputs.revision }}" >> $GITHUB_ENV          
+      - name: Set custom version
+        run: echo "VERSION=${{ inputs.version }}" >> $GITHUB_ENV
 
-      - name: Set up Release Drafter
+      - name: Run Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
-          config-name: release-drafter.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ env.VERSION }}
+          version: ${{ env.VERSION }}
+
+
+
+
+
+
+          
+# name: Release
+
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       revision:
+#         required: false
+#         type: string
+#       release_info:
+#         required: false
+#         type: string
+#       java_version:
+#         required: false
+#         type: string
+#         default: "21"
+
+# jobs:
+  
+  # pom:
+  #   uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
+  #   with:
+  #     file: pom.xml
+  #     revision: ${{ github.event.inputs.revision }}
+      
+  # release:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Set version for Release Drafter
+  #       run: echo "VERSION=${{ github.event.inputs.revision }}" >> $GITHUB_ENV          
+
+  #     - name: Set up Release Drafter
+  #       uses: release-drafter/release-drafter@v5
+  #       with:
+  #         config-name: release-drafter.yml
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         VERSION: ${{ env.VERSION }}
   # pom:
   #   uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
   #   with:
