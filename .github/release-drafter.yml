@@ -9,7 +9,7 @@ categories:
       - bug
   - title: '🛠️ Technical Debt'
     labels:
-      - refactor1
+      - refactor
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 template: |
