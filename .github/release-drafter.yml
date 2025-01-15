@@ -1,5 +1,8 @@
-name-template: 'Release v{{version}}'
-tag-template: 'v{{version}}'
+name-template: 'Release v${{ env.VERSION }}'
+tag-template: 'v${{ env.VERSION }}'
+version-resolver:
+  custom:
+    value: ${{ env.VERSION }}
 categories:
   - title: '🚀 New Features'
     labels:
@@ -7,15 +10,8 @@ categories:
   - title: '🐛 Bug Fixes'
     labels:
       - 'bug'
-change-template: '- {{change}}'
+change-template: '- {{text}} (#{{number}} by @{{author}})'
 no-changes-template: 'No changes in this release.'
-version-template: '$MAJOR.$MINOR.$PATCH$PRERELEASE'
-version-resolver:
-  major: { labels: [] }
-  minor: { labels: [] }
-  patch: { labels: [] }
-  default: 'patch'
-  custom: { value: '${{ env.VERSION }}' }
 template: |
   ## What's Changed
 
