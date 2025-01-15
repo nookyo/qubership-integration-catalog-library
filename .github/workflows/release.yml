@@ -20,6 +20,7 @@ jobs:
         with:
           version: ${{ inputs.version }}
           config-name: release-drafter.yml
+          draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
 
