@@ -1,4 +1,4 @@
-name-template: 'Release v${{ env.VERSION }}'
+name-template: 'Release v${{ RESOLVED_VERSION }}'
 tag-template: 'v${{ env.VERSION }}'
 categories:
   - title: '🚀 New Features'
