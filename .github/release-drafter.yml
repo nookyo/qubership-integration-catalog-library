@@ -6,10 +6,10 @@ categories:
       - feature
   - title: '🐛 Bug Fixes'
     labels:
-      - bugfix
+      - bug
   - title: '🛠️ Technical Debt'
     labels:
-      - refactor
+      - refactor1
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 template: |
