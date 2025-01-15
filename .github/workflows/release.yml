@@ -20,7 +20,7 @@ jobs:
     with:
       file: pom.xml
       revision: ${{ github.event.inputs.revision }}
-
+      
   release:
     runs-on: ubuntu-latest
     steps:
@@ -29,13 +29,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set version for Release Drafter
+        run: echo "VERSION=${{ github.event.inputs.revision }}" >> $GITHUB_ENV          
+
       - name: Set up Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ github.event.inputs.revision }}
+          VERSION: ${{ env.VERSION }}
   # pom:
   #   uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
   #   with:
