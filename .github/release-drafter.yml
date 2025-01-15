@@ -1,26 +1,32 @@
-.github/release-drafter.yml:
-
-name-template: 'Release v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+name-template: 'Release v{{version}}'
+tag-template: 'v{{version}}'
 categories:
-  - title: 🚀 Features
+  - title: '🚀 Features'
     labels:
-      - feature
-  - title: 🛠 Maintenance
+      - 'feature'
+  - title: '🐛 Bug Fixes'
     labels:
-      - chore
-  - title: 🛠️ Bug Fixes
+      - 'bug'
+  - title: '🛠️ Maintenance'
     labels:
-      - bug
+      - 'maintenance'
 change-template: '- $TITLE (#$NUMBER by @$AUTHOR)'
+
 template: |
   ## Changes
 
   ### 🚀 Features
-  $CHANGES
+  $CHANGES_FOR_CATEGORY_🚀_Features
 
   ### 🛠️ Maintenance
-  $CHANGES
+  $CHANGES_FOR_CATEGORY_🛠️_Maintenance
 
-  ### 🛠️ Bug Fixes
-  $CHANGES
+  ### 🐛 Bug Fixes
+  $CHANGES_FOR_CATEGORY_🐛_Bug_Fixes
+
+no-changes-template: 'No changes in this release.'
+
+version-resolver:
+  custom:
+    value: ${{ env.VERSION }}  # Используем переменную окружения
+draft: false

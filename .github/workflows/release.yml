@@ -21,29 +21,54 @@ jobs:
       file: pom.xml
       revision: ${{ github.event.inputs.revision }}
 
-  git_release:
-    uses: nookyo/workflow-hub/.github/workflows/create-github-release.yml@main
-    needs: pom
-    with:
-      revision: ${{ github.event.inputs.revision }}
-      release_info: ${{ github.event.inputs.release_info }}
-      draft: false
-      prerelease: false
-
-  release_notes:
-    needs: git_release
+  release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: release-drafter/release-drafter@v5
+      - name: Set up Release Drafter
+        uses: release-drafter/release-drafter@v5
         with:
           config-name: .github/release-drafter.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.event.inputs.revision }}
+  # pom:
+  #   uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
+  #   with:
+  #     file: pom.xml
+  #     revision: ${{ github.event.inputs.revision }}
 
+  # git_release:
+  #   uses: nookyo/workflow-hub/.github/workflows/create-github-release.yml@main
+  #   needs: pom
+  #   with:
+  #     revision: ${{ github.event.inputs.revision }}
+  #     release_info: ${{ github.event.inputs.release_info }}
+  #     draft: false
+  #     prerelease: false
+
+  # release:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Set version for Release Drafter
+  #       run: echo "RELEASE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+
+  #     - name: Set up Release Drafter
+  #       uses: release-drafter/release-drafter@v5
+  #       with:
+  #         config-name: .github/release-drafter.yml
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         VERSION: ${{ github.event.inputs.revision }}
   # maven:
   #   uses: nookyo/workflow-hub/.github/workflows/maven-publish.yml@main
   #   needs: git_release
