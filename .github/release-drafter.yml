@@ -1,6 +1,6 @@
-name-template: 'Release v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
-tag-template: 'v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
-version-template: '$CUSTOM_PREFIX-$MAJOR.$MINOR.$PATCH'
+name-template: 'Release v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+version-template: '$PATCH'
 
 categories:
   - title: '💥 Breaking Changes'
@@ -22,7 +22,7 @@ change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 
 template: |
-  ## 🚀 Release v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION
+  ## 🚀 Release v$NEXT_PATCH_VERSION
 
   ### What's Changed
   $CHANGES
