@@ -23,24 +23,18 @@ jobs:
           echo "::set-output name=release_version::$RELEASE_VERSION"
         env:
           GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-      
+
       - name: Verify release_version output
         run: |
           echo "Debug: release_version=${{ steps.get_release_version.outputs.release_version }}"
 
   pom:
     needs: get_release_version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug release_version in pom job
-        run: |
-          echo "Debug: release_version from get_release_version=${{ needs.get_release_version.outputs.release_version }}"
+    uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
+    with:
+      file: pom.xml
+      revision: ${{ needs.get_release_version.outputs.release_version }}
 
-      - name: Run update-pom-release
-        uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
-        with:
-          file: pom.xml
-          revision: ${{ needs.get_release_version.outputs.release_version }}
 
 
 
