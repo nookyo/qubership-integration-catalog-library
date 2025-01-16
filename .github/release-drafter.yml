@@ -1,6 +1,6 @@
-name-template: 'v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION'
-version-template: '$RESOLVED_VERSION'
+name-template: 'v$CUSTOM_PREFIX-$RESOLVED_VERSION'
+tag-template: 'v$CUSTOM_PREFIX-$RESOLVED_VERSION'
+version-template: '$CUSTOM_PREFIX-$RESOLVED_VERSION'
 
 categories:
   - title: '💥 Breaking Changes'
@@ -22,7 +22,7 @@ change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 
 template: |
-  ## 🚀 Release v$RESOLVED_VERSION
+  ## 🚀 Release v$CUSTOM_PREFIX-$RESOLVED_VERSION
 
   ### What's Changed
   $CHANGES
