@@ -15,10 +15,10 @@ on:
         options: 
             - 'true'
             - 'false'
-      prefix:
-        description: 'Release prefix'
-        required: false
-        default: '2025'               
+      # prefix:
+      #   description: 'Release prefix'
+      #   required: false
+      #   default: '2025'               
 
 jobs:
   draft-release:
@@ -27,23 +27,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set Custom Prefix as Environment Variable
-        run: echo "CUSTOM_PREFIX=${{ inputs.prefix }}" >> $GITHUB_ENV
-        
-      - name: Add Custom Prefix to Annotations
-        run: |
-          echo "annotations:" >> .github/release-drafter-config.yml
-          echo "  CUSTOM_PREFIX: ${{ inputs.prefix }}" >> .github/release-drafter-config.yml           
-
       - name: Run Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
-          # version: ${{ inputs.version }}
+          version: ${{ inputs.version }}
           config-name: release-drafter.yml
           publish: ${{ inputs.publish}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_PREFIX: ${{ inputs.prefix }}  
+          # CUSTOM_PREFIX: ${{ inputs.prefix }}  
 
 
 
