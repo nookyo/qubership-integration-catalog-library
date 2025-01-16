@@ -1,5 +1,6 @@
-name-template: 'vRESOLVED_VERSION'
-tag-template: 'vRESOLVED_VERSION'
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+version-template: '$RESOLVED_VERSION'
 
 categories:
   - title: '💥 Breaking Changes'
