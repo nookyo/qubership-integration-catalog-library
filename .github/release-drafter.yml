@@ -1,5 +1,6 @@
 name-template: 'Release v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
 tag-template: 'v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
+version-template: 'v$CUSTOM_PREFIX-$MAJOR.$MINOR.$PATCH
 categories:
 
   - title: '💥 Breaking Changes'
