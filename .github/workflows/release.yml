@@ -14,7 +14,11 @@ on:
         type: choice
         options: 
             - 'true'
-            - 'false'        
+            - 'false'
+      prefix:
+        description: 'Release prefix'
+        required: false
+        default: '2025'               
 
 jobs:
   draft-release:
@@ -30,7 +34,8 @@ jobs:
           config-name: release-drafter.yml
           publish: ${{ inputs.publish}}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_PREFIX: ${{ inputs.prefix }}  
 
 
 
