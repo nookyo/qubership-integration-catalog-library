@@ -26,20 +26,20 @@
               echo "::set-output name=release_version::$RELEASE_VERSION"
     
       pom:
-        uses: Netcracker/qubership-workflow-hub/.github/workflows/update-pom-release.yml@main
+        uses: nookyo/workflow-hub/.github/workflows/update-pom-release.yml@main
         with:
           file: pom.xml
           revision: ${{ steps.get_release_version.outputs.release_version }}
     
-      maven:
-        uses: Netcracker/qubership-workflow-hub/.github/workflows/maven-publish.yml@main
-        needs: pom
-        with:
-          maven_command: "--batch-mode deploy"
-          java_version: '21'
-          revision: ${{ steps.get_release_version.outputs.release_version }}
-        secrets:
-          maven_username: ${{ secrets.MAVEN_USER }}
-          maven_password: ${{ secrets.MAVEN_PASSWORD }}
-          maven_gpg_passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-          maven_gpg_private_key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+    #   maven:
+    #     uses: Netcracker/qubership-workflow-hub/.github/workflows/maven-publish.yml@main
+    #     needs: pom
+    #     with:
+    #       maven_command: "--batch-mode deploy"
+    #       java_version: '21'
+    #       revision: ${{ steps.get_release_version.outputs.release_version }}
+    #     secrets:
+    #       maven_username: ${{ secrets.MAVEN_USER }}
+    #       maven_password: ${{ secrets.MAVEN_PASSWORD }}
+    #       maven_gpg_passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+    #       maven_gpg_private_key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
