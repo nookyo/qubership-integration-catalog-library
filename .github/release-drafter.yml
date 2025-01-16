@@ -1,5 +1,5 @@
-name-template: 'Release v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+name-template: 'v$MAJOR.$MINOR.$PATCH'
+tag-template: 'v$MAJOR.$MINOR.$PATCH'
 version-template: '$PATCH'
 
 categories:
@@ -22,7 +22,7 @@ change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 
 template: |
-  ## 🚀 Release v$NEXT_PATCH_VERSION
+  ## 🚀 Release v$MAJOR.$MINOR.$PATCH     $COMPLETE
 
   ### What's Changed
   $CHANGES
