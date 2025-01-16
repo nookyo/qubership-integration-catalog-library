@@ -7,6 +7,14 @@ on:
         description: 'Custom release version'
         required: true
         default: '1.0.0'
+      enable_feature:
+        description: 'Enable publish release?'
+        required: true
+        default: 'false'
+        type: choice
+        options: 
+            - 'true'
+            - 'false'        
 
 jobs:
   draft-release:
