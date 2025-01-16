@@ -26,9 +26,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
       - name: Set Custom Prefix as Environment Variable
-        run: echo "CUSTOM_PREFIX=${{ inputs.prefix }}" >> $GITHUB_ENV        
+        run: echo "CUSTOM_PREFIX=${{ inputs.prefix }}" >> $GITHUB_ENV
+        
+      - name: Add Custom Prefix to Annotations
+        run: |
+          echo "annotations:" >> .github/release-drafter-config.yml
+          echo "  CUSTOM_PREFIX: ${{ inputs.prefix }}" >> .github/release-drafter-config.yml           
 
       - name: Run Release Drafter
         uses: release-drafter/release-drafter@v5
