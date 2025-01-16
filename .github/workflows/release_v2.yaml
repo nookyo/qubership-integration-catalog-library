@@ -17,7 +17,7 @@ on:
 jobs:
 
   release:
-    uses: Netcracker/qubership-workflow-hub/.github/workflows/release-drafter.yml@main   
+    uses:  nookyo/workflow-hub/.github/workflows/release-drafter.yml@main   
     with:
       version: ${{ github.event.inputs.version }}
       publish: ${{ github.event.inputs.publish }}
