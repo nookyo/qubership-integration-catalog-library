@@ -30,7 +30,7 @@ jobs:
       - name: Run Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
-          version: ${{ inputs.version }}
+          # version: ${{ inputs.version }}
           config-name: release-drafter.yml
           publish: ${{ inputs.publish}}
         env:
