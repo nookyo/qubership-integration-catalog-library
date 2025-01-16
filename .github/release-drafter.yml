@@ -1,12 +1,11 @@
 name-template: 'Release v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
 tag-template: 'v$CUSTOM_PREFIX-$NEXT_MAJOR_VERSION.$NEXT_MINOR_VERSION.$NEXT_PATCH_VERSION'
-version-template: 'v$CUSTOM_PREFIX-$MAJOR.$MINOR.$PATCH'
-categories:
+version-template: '$CUSTOM_PREFIX-$MAJOR.$MINOR.$PATCH'
 
+categories:
   - title: '💥 Breaking Changes'
-        
     labels:
-      - breaking-change 
+      - breaking-change
   - title: '🚀 New Features'
     labels:
       - feature
@@ -15,11 +14,10 @@ categories:
       - bug
       - fix
       - bugfix
-
   - title: '🛠️ Technical Debt'
     labels:
       - refactor
-    
+
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: 'No significant changes'
 
@@ -30,14 +28,15 @@ template: |
   $CHANGES
 
   **Contributors:** $CONTRIBUTORS
+
 version-resolver:
   major:
     labels:
-      - 'major'
+      - major
   minor:
     labels:
-      - 'minor'
+      - minor
   patch:
     labels:
-      - 'patch'
+      - patch
   default: patch
