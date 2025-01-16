@@ -7,7 +7,7 @@ on:
         description: 'Custom release version'
         required: true
         default: '1.0.0'
-      enable_feature:
+      publish:
         description: 'Enable publish release?'
         required: true
         default: 'false'
@@ -28,7 +28,7 @@ jobs:
         with:
           version: ${{ inputs.version }}
           config-name: release-drafter.yml
-          draft: false
+          publish: ${{ inputs.publish}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
 
