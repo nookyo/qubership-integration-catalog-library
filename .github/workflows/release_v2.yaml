@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check Tag Exists
-        uses: ./actions/tag-checker
+        uses: ./github/actions/tag-checker
         with:
           tag_name: "v1.0.0"
 
