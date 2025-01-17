@@ -15,12 +15,27 @@ on:
         description: 'Enable publish release?'
 
 jobs:
-
   release:
-    uses:  nookyo/workflow-hub/.github/workflows/release-drafter.yml@main   
-    with:
-      version: ${{ github.event.inputs.version }}
-      publish: ${{ github.event.inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Check Tag Exists
+        uses: ./actions/tag-checker
+        with:
+          tag_name: "v1.0.0"
+
+      - name: Output Result
+        run: echo "Does the tag exist? ${{ steps.check_tag.outputs.exists }}"
+
+      # - name: Release Drafter  
+      #   uses:  nookyo/workflow-hub/.github/workflows/release-drafter.yml@main 
+      #   with:
+      #     version: ${{ github.event.inputs.version }}
+      #     publish: ${{ github.event.inputs.publish }}
+        
+
 
 #   pom:
 #     uses: Netcracker/qubership-workflow-hub/.github/workflows/update-pom-release.yml@main
