@@ -17,6 +17,25 @@ on:
 jobs:
 
   release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check Tag Exists
+        uses: ./my-tag-checker-action
+        id: check_tag
+        with:
+          tag_name: "v1.0.0"
+  
+      - name: Debug Output
+        run: echo "Tag exists: ${{ steps.check_tag.outputs.exists }}"
+
+
+
+
     uses:  nookyo/workflow-hub/.github/workflows/release-drafter.yml@main   
     with:
       version: ${{ github.event.inputs.version }}
