@@ -61,7 +61,7 @@ When triggering a `repository_dispatch` event, the `client_payload` parameters c
 
 
 ```yaml
-name: Print Payload Variables
+name: Payload Variables
 
 on:
   repository_dispatch:
