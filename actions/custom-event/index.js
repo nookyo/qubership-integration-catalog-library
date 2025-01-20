@@ -6,7 +6,7 @@ async function run() {
 
     // Get the input parameter: tag
     const eventName = core.getInput('event_name', { required: true });
-    const clientPayload = JSON.parse(core.getInput('payload', { required: false }) || '{}');
+    const clientPayload = JSON.parse(core.getInput('client_payload', { required: false }) || '{}');
 
     core.info(`Event name: ${eventName}`);
     core.info(`Payload: ${payload}`);
