@@ -31830,14 +31830,18 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(8335);
 const github = __nccwpck_require__(5355);
 
-(async () => {
+async function run() {
   try {
     // Get the input parameter: tag
     const tag = core.getInput('tag', { required: true });
     core.info(`Checking for the presence of tag: ${tag}`);
 
     // Create GitHub API client
-    const token = core.getInput('github-token', { required: true });
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) {
+      throw new Error('GitHub token is not provided. Make sure it is passed as an environment variable.');
+    }
+    
     const octokit = github.getOctokit(token);
 
     // Retrieve the list of tags
@@ -31857,7 +31861,9 @@ const github = __nccwpck_require__(5355);
   } catch (error) {
     core.setFailed(`Error: ${error.message}`);
   }
-})();
+}
+
+run();
 
 module.exports = __webpack_exports__;
 /******/ })()
