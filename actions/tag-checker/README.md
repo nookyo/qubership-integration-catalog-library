@@ -6,13 +6,13 @@ This GitHub Action checks whether a specified tag exists in a repository.
 
 | Name           | Description                       | Required | Default |
 |----------------|-----------------------------------|----------|---------|
-| `tag`          | The tag name to check.           | Yes      | None    |
-| `github-token` | GitHub Token for authentication. | No       | None    |
+| `tag`          | The tag name to check.            | Yes      | None    |
+| `GITHUB_TOKEN` | GitHub Token for authentication.  | Yes      | None    |
 
 ## Outputs
 
-| Name    | Description                       |
-|---------|-----------------------------------|
+| Name    | Description                                   |
+|---------|-----------------------------------------------|
 | `exists` | `true` if the tag exists, `false` otherwise. |
 
 ## Usage
@@ -32,13 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check if tag exists
         uses: ./actions/tag-checker
         with:
           tag: 'v1.0.0'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env: ${{ secrets.GITHUB_TOKEN }}  
         
       - name: Output result
         run: echo "Tag exists: ${{ steps.check-tag.outputs.exists }}"
