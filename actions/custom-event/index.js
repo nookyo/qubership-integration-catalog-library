@@ -13,6 +13,8 @@ async function run() {
 
     // Create GitHub API client
     const token = core.getInput('github-token', { required: true });
+
+    
     const octokit = github.getOctokit(token);
 
     const { owner, repo } = github.context.repo;
