@@ -1,0 +1,16 @@
+name: React to Custom Event
+
+on:
+  repository_dispatch:
+    types:
+      - custom_push_event # Название события, которое должно вызывать workflow
+
+jobs:
+  react_to_custom_event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log event data
+        run: |
+          echo "Triggered by custom event: ${{ github.event.action }}"
+          echo "Client Payload: ${{ toJson(github.event.client_payload) }}"
