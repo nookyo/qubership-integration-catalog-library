@@ -42,7 +42,7 @@ jobs:
         uses: ./actions/custom-event  # Path to the action
         with:
           event_name: "custom_event"
-          github-token: ${{ secrets.GITHUB_TOKEN }} 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
        
         
