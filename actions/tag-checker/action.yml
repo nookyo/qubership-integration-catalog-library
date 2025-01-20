@@ -12,4 +12,4 @@ outputs:
     description: 'True/False'
 runs:
   using: 'node16'
-  main: 'distr/index.js'
+  main: 'dist/index.js'
