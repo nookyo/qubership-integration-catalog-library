@@ -6,7 +6,7 @@ async function run() {
 
     // Get the input parameter: tag
     const eventName = core.getInput('event_name', { required: true });
-    const payload = JSON.parse(core.getInput('payload', { required: false }) || '{}');
+    const clientPayload = JSON.parse(core.getInput('payload', { required: false }) || '{}');
 
     core.info(`Event name: ${eventName}`);
     core.info(`Payload: ${payload}`);
@@ -24,7 +24,7 @@ async function run() {
       owner,
       repo,
       event_type: eventName,
-      payload: payload,
+      clientPayload: clientPayload,
     });
 
     core.setOutput('status', response.status);
