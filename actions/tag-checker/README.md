@@ -38,7 +38,8 @@ jobs:
         uses: netcracker/qubership-workflow-hub/actions/tag-checker@master
         with:
           tag: 'v1.0.0'
-        env: ${{ secrets.GITHUB_TOKEN }}  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Output result
         run: echo "Tag exists: ${{ steps.check-tag.outputs.exists }}"
