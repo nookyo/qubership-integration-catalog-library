@@ -46,7 +46,6 @@ jobs:
 
 The `client_payload` input allows you to pass custom data as a JSON string. Below are examples with specific values:
 
-## Deploy to Environment Example
 
 ```yaml
 with:
@@ -59,7 +58,7 @@ with:
 
 When triggering a `repository_dispatch` event, the `client_payload` parameters can be accessed directly in the target workflow. Here's how to retrieve the specific parameters defined earlier (`environment`, `version`, `branch`, `build_id`, etc.):
 
-## Example Workflow
+
 
 ```yaml
 name: Print Payload Variables
