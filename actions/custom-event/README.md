@@ -18,6 +18,7 @@ This  Action triggers a custom `repository_dispatch` event in the repository.
 
 ## Usage
 
+
 Below is an example of how to use this action in a GitHub Actions workflow:
 
 ```yaml
@@ -37,7 +38,8 @@ jobs:
           client_payload: '{"key": "value"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}  
-          
+
+  ```
 
 # Example for `client_payload` with Values
 
@@ -47,5 +49,31 @@ The `client_payload` input allows you to pass custom data as a JSON string. Belo
 
 ```yaml
 with:
-  event_name: "deploy"
+  event_name: "custom_event"
   client_payload: '{"environment": "production", "version": "1.2.3"}'
+```
+
+
+# Example: Accessing Parameters from `client_payload`
+
+When triggering a `repository_dispatch` event, the `client_payload` parameters can be accessed directly in the target workflow. Here's how to retrieve the specific parameters defined earlier (`environment`, `version`, `branch`, `build_id`, etc.):
+
+## Example Workflow
+
+```yaml
+name: Print Payload Variables
+
+on:
+  repository_dispatch:
+    types:
+      - custom_event
+
+jobs:
+  print-payload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Access to vatiables
+        run: |
+          echo "Environment: ${{ github.event.client_payload.environment }}"
+          echo "Version: ${{ github.event.client_payload.version }}"
+```
