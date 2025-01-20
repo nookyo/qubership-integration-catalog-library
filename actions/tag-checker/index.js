@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-(async () => {
+async function run() {
   try {
     // Get the input parameter: tag
     const tag = core.getInput('tag', { required: true });
@@ -28,4 +28,6 @@ const github = require('@actions/github');
   } catch (error) {
     core.setFailed(`Error: ${error.message}`);
   }
-})();
+}
+
+run();
