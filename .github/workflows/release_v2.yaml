@@ -26,7 +26,7 @@ jobs:
       - name: Run Check Tag Action
         uses: ./actions/tag-checker  # Path to the action
         with:
-          tag: ${{ github.event.inputs.tag }}
+          tag: ${{ github.event.inputs.version }}
           github-token: ${{ secrets.GITHUB_TOKEN }}        
 
       - name: Tag exists
