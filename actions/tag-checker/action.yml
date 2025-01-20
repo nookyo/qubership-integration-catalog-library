@@ -1,4 +1,4 @@
-name: 'Check Tag'
+name: 'Tag Checker Action'
 description: 'Check a specified tag'
 inputs:
   tag:
