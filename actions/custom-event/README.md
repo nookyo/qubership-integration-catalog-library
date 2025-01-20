@@ -42,7 +42,7 @@ jobs:
   ```
 
 
-### `client_payload` Explanation
+# `client_payload` Explanation
 
 The `client_payload` input allows you to pass custom data as a JSON string. Below are examples with specific values:
 
@@ -54,7 +54,7 @@ with:
 ```
 
 
-### Example: Accessing Parameters from `client_payload`
+## Example: Accessing Parameters from `client_payload`
 
 When triggering a `repository_dispatch` event, the `client_payload` parameters can be accessed directly in the target workflow. Here's how to retrieve the specific parameters defined earlier (`environment`, `version`, `branch`, `build_id`, etc.):
 
