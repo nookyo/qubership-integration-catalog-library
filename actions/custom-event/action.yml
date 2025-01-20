@@ -10,7 +10,7 @@ inputs:
     default: "{}"
   github-token:
     description: 'GitHub Token'
-    required: true    
+    required: false    
 outputs:
   status:
     description: "Status of the dispatch request"
