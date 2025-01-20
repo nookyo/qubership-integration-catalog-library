@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check if tag exists
-        uses: ./actions/tag-checker
+        uses: netcracker/qubership-workflow-hub/actions/tag-checker@master
         with:
           tag: 'v1.0.0'
         env: ${{ secrets.GITHUB_TOKEN }}  
