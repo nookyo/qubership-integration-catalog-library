@@ -23,8 +23,8 @@ async function run() {
     const response = await octokit.rest.repos.createDispatchEvent({
       owner,
       repo,
-      event_type: eventName
-      //client_payload : clientPayload,
+      event_type: eventName,
+      client_payload : clientPayload,
     });
 
     core.setOutput('status', response.status);
