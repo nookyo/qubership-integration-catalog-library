@@ -1,16 +1,15 @@
-name: Check Tag Existence
-description: A GitHub Action to check if a specific tag exists in the repository.
+name: 'Check Tag'
+description: 'Checks if a specified tag exists in the repository'
 inputs:
-  tag_name:
-    description: The tag to check for.
+  tag:
+    description: 'Name of the tag to check'
+    required: true
+  github-token:
+    description: 'GitHub Token for authentication'
     required: true
 outputs:
   exists:
-    description: Whether the tag exists or not.
+    description: 'True if the tag exists, otherwise False'
 runs:
-  using: 'docker'
-  image: 'docker://python:3.9'
-  args:
-    - python
-    - /tag_checker.py
-    - ${{ inputs.tag_name }}
+  using: 'node16'
+  main: 'index.js'

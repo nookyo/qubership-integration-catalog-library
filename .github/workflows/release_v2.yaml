@@ -15,19 +15,42 @@ on:
         description: 'Enable publish release?'
 
 jobs:
-  release:
+  check-tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      # Checkout the repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Check Tag Exists
-        uses: ./actions/tag-checker
+      # Run the Check Tag Action
+      - name: Run Check Tag Action
+        uses: ./actions/check-tag  # Path to the action
         with:
-          tag_name: "v1.0.0"
+          tag: ${{ github.event.inputs.tag }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}        
 
-      - name: Output Result
-        run: echo "Does the tag exist? ${{ steps.check_tag.outputs.exists }}"
+      - name: Tag exists
+        if: steps.check_tag.outputs.exists == 'true'  # Check if tag exists
+        run: echo "The tag exists!"
+  
+      - name: Tag does not exist
+        if: steps.check_tag.outputs.exists == 'false'  # Check if tag does not exist
+        run: echo "The tag does not exist!"          
+
+# jobs:
+#   release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       - name: Check Tag Exists
+#         uses: ./actions/tag-checker
+#         with:
+#           tag_name: "v1.0.0"
+
+#       - name: Output Result
+#         run: echo "Does the tag exist? ${{ steps.check_tag.outputs.exists }}"
 
       # - name: Release Drafter  
       #   uses:  nookyo/workflow-hub/.github/workflows/release-drafter.yml@main 
