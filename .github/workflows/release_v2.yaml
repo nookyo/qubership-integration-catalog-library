@@ -24,17 +24,18 @@ jobs:
 
       # Run the Check Tag Action
       - name: Run Check Tag Action
+        id: check_tag
         uses: ./actions/tag-checker  # Path to the action
         with:
           tag: ${{ github.event.inputs.version }}
           github-token: ${{ secrets.GITHUB_TOKEN }}        
 
       - name: Tag exists
-        if: steps.check_tag.outputs.exists == 'true'  # Check if tag exists
+        if: steps.check_tag.outputs.exists == 'True'  # Check if tag exists
         run: echo "The tag exists!"
   
       - name: Tag does not exist
-        if: steps.check_tag.outputs.exists == 'false'  # Check if tag does not exist
+        if: steps.check_tag.outputs.exists == 'False'  # Check if tag does not exist
         run: echo "The tag does not exist!"          
 
 # jobs:
