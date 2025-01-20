@@ -39,7 +39,7 @@ jobs:
         run: echo "The tag does not exist!" 
 
       - name: Rise Custom Event  
-        uses: ./actions/custon-vetn  # Path to the action
+        uses: ./actions/custon-event  # Path to the action
         with:
           event_name: "custom_event"
 
