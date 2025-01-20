@@ -8,7 +8,7 @@ const github = require('@actions/github');
     core.info(`Checking for the presence of tag: ${tag}`);
 
     // Create GitHub API client
-    const token = core.getInput('github-token', { required: true });
+    const token = core.getInput('github-token', { required: false }) || process.env.GITHUB_TOKEN;
     const octokit = github.getOctokit(token);
 
     // Retrieve the list of tags
