@@ -1,15 +1,15 @@
 name: 'Check Tag'
-description: 'Checks if a specified tag exists in the repository'
+description: 'Chec a specified tag'
 inputs:
   tag:
-    description: 'Name of the tag to check'
+    description: 'Tag name'
     required: true
   github-token:
-    description: 'GitHub Token for authentication'
+    description: 'GitHub Token'
     required: true
 outputs:
   exists:
-    description: 'True if the tag exists, otherwise False'
+    description: 'True/False'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'distr/index.js'
