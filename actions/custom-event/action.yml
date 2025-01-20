@@ -4,7 +4,7 @@ inputs:
   event_name:
     description: "The name of the custom event"
     required: true
-  payload:
+  client_payload:
     description: "Payload to send with the event"
     required: false
     default: "{}"
