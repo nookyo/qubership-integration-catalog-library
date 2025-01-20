@@ -1,6 +1,6 @@
-# GitHub Action: Check Tag
+# Tag Checker Action
 
-This GitHub Action checks whether a specified tag exists in a repository.
+This Action checks whether a specified tag exists in a repository.
 
 ## Inputs
 
