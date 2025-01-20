@@ -42,8 +42,7 @@ jobs:
       - name: Rise Custom Event  
         uses: ./actions/custom-event  # Path to the action
         with:
-          event_name: "custom_event"
-          client_payload: '{"key": "value"}' 
+          event_name: "custom_eventASDaSDASqsadw"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
