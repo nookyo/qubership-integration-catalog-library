@@ -29,8 +29,7 @@ jobs:
         with:
           tag: ${{ github.event.inputs.version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}         
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Tag exists
         if: steps.check_tag.outputs.exists == 'True'  # Check if tag exists
         run: echo "The tag exists!"
@@ -42,7 +41,7 @@ jobs:
       - name: Rise Custom Event  
         uses: ./actions/custom-event  # Path to the action
         with:
-          event_name: "custom_eventASDaSDASqsadw"
+          event_name: "custom_event"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
