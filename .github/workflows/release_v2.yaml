@@ -24,7 +24,7 @@ jobs:
 
       # Run the Check Tag Action
       - name: Run Check Tag Action
-        uses: ./actions/check-tag  # Path to the action
+        uses: ./actions/tag-checker  # Path to the action
         with:
           tag: ${{ github.event.inputs.tag }}
           github-token: ${{ secrets.GITHUB_TOKEN }}        
