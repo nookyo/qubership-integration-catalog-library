@@ -43,7 +43,6 @@ jobs:
         with:
           event_name: "custom_event"
           client_payload: '{"key": "value"}' 
-          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
