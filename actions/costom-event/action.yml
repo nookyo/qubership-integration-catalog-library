@@ -1,0 +1,16 @@
+name: "Custom Event Trigger"
+description: "Triggers a custom repository_dispatch event"
+inputs:
+  event_name:
+    description: "The name of the custom event"
+    required: true
+  payload:
+    description: "Payload to send with the event"
+    required: false
+    default: "{}"
+outputs:
+  status:
+    description: "Status of the dispatch request"
+runs:
+  using: "node16"
+  main: "dist/index.js"
