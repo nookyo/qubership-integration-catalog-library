@@ -24,7 +24,7 @@ async function run() {
       owner,
       repo,
       event_type: eventName,
-      clientPayload: clientPayload,
+      client_payload : clientPayload,
     });
 
     core.setOutput('status', response.status);
