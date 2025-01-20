@@ -1,5 +1,5 @@
 name: 'Check Tag'
-description: 'Chec a specified tag'
+description: 'Check a specified tag'
 inputs:
   tag:
     description: 'Tag name'
