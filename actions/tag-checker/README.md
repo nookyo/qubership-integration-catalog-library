@@ -13,7 +13,7 @@ This GitHub Action checks whether a specified tag exists in a repository.
 
 | Name    | Description                                   |
 |---------|-----------------------------------------------|
-| `exists` | `true` if the tag exists, `false` otherwise. |
+| `exists` | `True` if the tag exists, `False` otherwise. |
 
 ## Usage
 
