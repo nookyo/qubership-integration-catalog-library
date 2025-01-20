@@ -72,7 +72,7 @@ jobs:
   print-payload:
     runs-on: ubuntu-latest
     steps:
-      - name: Access to vatiables
+      - name: Access to variables
         run: |
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Version: ${{ github.event.client_payload.version }}"
