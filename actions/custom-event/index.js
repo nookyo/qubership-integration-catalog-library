@@ -3,14 +3,16 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    const token = process.env.GITHUB_TOKEN;
-    if (!token) {
-      throw new Error('GITHUB_TOKEN is not provided');
-    }
 
+    // Get the input parameter: tag
     const eventName = core.getInput('event_name', { required: true });
     const payload = JSON.parse(core.getInput('payload', { required: false }) || '{}');
 
+    core.info(`Event name: ${eventName}`);
+    core.info(`Payload: ${payload}`);
+
+    // Create GitHub API client
+    const token = core.getInput('github-token', { required: true });
     const octokit = github.getOctokit(token);
 
     const { owner, repo } = github.context.repo;

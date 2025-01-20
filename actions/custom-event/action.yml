@@ -8,6 +8,9 @@ inputs:
     description: "Payload to send with the event"
     required: false
     default: "{}"
+  github-token:
+    description: 'GitHub Token'
+    required: true    
 outputs:
   status:
     description: "Status of the dispatch request"
