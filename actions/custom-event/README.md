@@ -37,4 +37,15 @@ jobs:
           client_payload: '{"key": "value"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}  
+          
 
+# Example for `client_payload` with Values
+
+The `client_payload` input allows you to pass custom data as a JSON string. Below are examples with specific values:
+
+## Deploy to Environment Example
+
+```yaml
+with:
+  event_name: "deploy"
+  client_payload: '{"environment": "production", "version": "1.2.3"}'
