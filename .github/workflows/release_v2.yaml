@@ -36,7 +36,17 @@ jobs:
   
       - name: Tag does not exist
         if: steps.check_tag.outputs.exists == 'False'  # Check if tag does not exist
-        run: echo "The tag does not exist!"          
+        run: echo "The tag does not exist!" 
+
+      - name: Rise Custom Event  
+        uses: ./actions/custon-vetn  # Path to the action
+        with:
+          event_name: "custom_event"
+
+       
+        
+        
+
 
 # jobs:
 #   release:
