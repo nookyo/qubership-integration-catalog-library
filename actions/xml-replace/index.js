@@ -12,7 +12,9 @@ async function run() {
     core.info(`Hello, ${name}!`);
     core.info(`My boy: ${greeting}`);
 
-    const data = fs.readFile('./pom.xml', 'utf8');
+    let filePath = './pom.xml'
+    //const data = fs.readFile('./pom.xml', 'utf8');
+    const data = await fs.readFile(filePath, 'utf8');
     // const data = await fs.readFile(filePath, 'utf8');
     core.info('Contenst =\n ${data}')
 
