@@ -1,0 +1,18 @@
+name: 'Xml Replace Action'
+description: 'Check a specified tag'
+inputs:
+  name:
+    description: ''
+    required: true
+  greeting:
+    description: ''
+    required: true
+
+outputs:
+  done:
+    description: ''
+  current-value:
+    description: ''
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
