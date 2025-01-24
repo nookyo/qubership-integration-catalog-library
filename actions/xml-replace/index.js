@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs')
 
 async function run() {
   try {
@@ -10,6 +11,9 @@ async function run() {
 
     core.info(`Hello, ${name}!`);
     core.info(`My boy: ${greeting}`);
+
+    const xml = fs.readFile('./pom.xml');
+
 
 
     const context = github.context;
