@@ -31829,6 +31829,7 @@ module.exports = parseParams
 var __webpack_exports__ = {};
 const core = __nccwpck_require__(8335);
 const github = __nccwpck_require__(5355);
+const fs = __nccwpck_require__(9896)
 
 async function run() {
   try {
@@ -31839,6 +31840,9 @@ async function run() {
 
     core.info(`Hello, ${name}!`);
     core.info(`My boy: ${greeting}`);
+
+    const xml = fs.readFile('./pom.xml');
+
 
 
     const context = github.context;
