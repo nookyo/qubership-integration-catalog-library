@@ -20,18 +20,18 @@ async function run() {
     const data = fs.readFileSync(filePath, 'utf8');
     core.info(`Contenst =\n${data}`)
 
-   const result = new XMLParser().parse(data)
+    const result = new XMLParser().parse(data)
 
-   const sections =  result.root.section;
+    const sections =  result.root.section;
 
-   const sectionName = 'version'
+    const sectionName = 'version'
 
-   const section = Array.isArray(sections)
-   ? sections.find(s => s.name === sectionName)
-   : sections.name === sectionName
-   ? sections
-   : null;
-   console.log(`Значение секции "${section}`);
+    const section = Array.isArray(sections)
+    ? sections.find(s => s.name === sectionName)
+    : sections.name === sectionName
+    ? sections
+    : null;
+    console.log(`Значение секции "${section}`);
 
     const context = github.context;
     core.info(`Event: ${context.eventName}`);
