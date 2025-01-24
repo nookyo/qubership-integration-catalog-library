@@ -12,7 +12,8 @@ async function run() {
     core.info(`Hello, ${name}!`);
     core.info(`My boy: ${greeting}`);
 
-    const xml = fs.readFile('./pom.xml');
+    const data = await fs.readFile('./pom.xml', 'utf8');
+    core.info('Contenst =\n ${data}')
 
 
 
