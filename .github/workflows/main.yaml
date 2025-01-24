@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run my Action
-        uses: ./actions/xml-replace@main
+        uses: ./actions/xml-replace
         with:
           name: 'Fucker'
           greeting: 'my boy'
