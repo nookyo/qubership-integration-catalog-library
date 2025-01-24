@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run my Action
-        uses: ./actions/xml-replace
+        # uses: ./actions/xml-replace
+        uses: ./actions/tag-checker
         with:
           name: 'Fucker'
           greeting: 'my boy'
