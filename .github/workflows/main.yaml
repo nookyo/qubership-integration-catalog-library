@@ -7,6 +7,9 @@ jobs:
   my-action:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Run my Action
         # uses: ./actions/xml-replace
         uses: ./actions/tag-checker
