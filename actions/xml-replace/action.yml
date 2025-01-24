@@ -8,11 +8,6 @@ inputs:
     description: ''
     required: true
 
-outputs:
-  done:
-    description: ''
-  current-value:
-    description: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
