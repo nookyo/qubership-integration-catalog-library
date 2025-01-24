@@ -31845,8 +31845,7 @@ async function run() {
     //const data = fs.readFile('./pom.xml', 'utf8');
     const data = fs.readFileSync(filePath, 'utf8');
     // const data = await fs.readFile(filePath, 'utf8');
-    core.info('Contenst =\n ${data}')
-
+    core.info(`Contenst =\n${data}`)
 
 
     const context = github.context;
