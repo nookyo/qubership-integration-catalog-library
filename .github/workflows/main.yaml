@@ -2,10 +2,7 @@ name: Custom Action
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        required: false
-        type: string
+
 jobs:
   my-action:
     runs-on: ubuntu-latest
