@@ -2,10 +2,10 @@ name: 'Commit and Push'
 description: 'Check a specified tag'
 inputs:
   author_name:
-    description: 'User'
+    description: 'Author Name'
     required: false
   author_email:
-    description: 'Email'
+    description: 'Author Email'
     required: false
   commit_message:
     description: 'Commit Message'
@@ -13,4 +13,4 @@ inputs:
 
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'dist/index.js'

@@ -1,0 +1,25 @@
+{
+  "name": "qubership-integration-catalog-library",
+  "version": "1.0.0",
+  "description": "Catalog Library is a part of global integration solution, which is described here: [qubership-integration-platform](https://github.com/Netcracker/qubership-integration-platform).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nookyo/qubership-integration-catalog-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nookyo/qubership-integration-catalog-library/issues"
+  },
+  "homepage": "https://github.com/nookyo/qubership-integration-catalog-library#readme",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "child_process": "^1.0.2"
+  }
+}
