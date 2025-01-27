@@ -3,7 +3,6 @@ const github = require('@actions/github');
 const { XMLParser, XMLBuilder } = require('fast-xml-parser');
 const fs = require('fs')
 
-const xpath = require('xpath');
 const document = new DOMParser().parseFromString(content);
 
 
