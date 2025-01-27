@@ -3,6 +3,7 @@ const github = require('@actions/github');
 const { DOMParser, XMLSerializer } = require('xmldom');
 const xpath = require('xpath');
 const fs = require('fs');
+const { execSync } = require('child_process');
 
 
 
