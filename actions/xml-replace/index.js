@@ -22,9 +22,6 @@ async function run() {
     const result = new XMLParser().parse(data)
     core.info(`parse data:\n${result}`)
 
-
-    console.log(`Значение секции "${section}`);
-
     const context = github.context;
     core.info(`Event: ${context.eventName}`);
 
