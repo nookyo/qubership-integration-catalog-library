@@ -14,14 +14,14 @@ async function updateXml(filePath, path, newValue) {
   });
 
   const xml = fs.readFileSync(filePath, 'utf8');
-  core.info(`Original XML: ${xml}`);
+  // core.info(`Original XML: ${xml}`);
 
   const doc = new DOMParser().parseFromString(xml);
 
-  const nodes = select(xpathExpression, doc);
+  const nodes = select(path, doc);
 
   if (nodes.length === 0) {
-    throw new Error(`No nodes found for expression: ${xpathExpression}`);
+    throw new Error(`No nodes found for expression: ${path}`);
   }
 
   nodes.forEach((node) => {
@@ -53,9 +53,10 @@ async function run() {
 
 
     await updateXml(filePath, path, newValue);
-    await commitAndPush(filePath, commitMessage);
+    
     if(commit){
       core.info(`Committing and pushing changes to the repository: ${commit}`);
+      // await commitAndPush(filePath, commitMessage);
     }
 
 
