@@ -10,8 +10,8 @@
 |-----------------|-----------|----------------------------------------------------------|
 | `branch`        | No       | The branch to which the changes will be pushed.         |
 | `commit_message`| No       | The commit message.                                     |
-| `author_name`   | No        | The name of the commit author. Defaults to the user running the action. |
-| `author_email`  | No        | The email of the commit author. Defaults to the user running the action. |
+| `author_name`   | No        | The name of the commit author. Defaults Tech Qubersip. |
+| `author_email`  | No        | The email of the commit author. Defaults tech@qubership.com. |
 
 ## Example Usage
 
@@ -37,7 +37,6 @@ jobs:
       - name: Commit and Push Changes
         uses: Netcracker/qubership-workflow-hub/actions/commit-and-push@main
         with:
-          repository: 'https://github.com/your-username/your-repo.git'
           branch: 'main'
           commit_message: 'Added changes to file.txt'
           author_name: 'Your Name'
