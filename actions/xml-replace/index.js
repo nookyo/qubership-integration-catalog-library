@@ -1,32 +1,49 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { XMLParser, XMLBuilder } = require('fast-xml-parser');
-const fs = require('fs')
+
+const { DOMParser, XMLSerializer } = require('xmldom');
+const xpath = require('xpath');
 
 
 async function run() {
   try {
 
-    const name = core.getInput('name');
-    const greeting = core.getInput('greeting');
+    // const name = core.getInput('name');
+    // const greeting = core.getInput('greeting');
 
 
-    core.info(`Hello, ${name}!`);
-    core.info(`My boy: ${greeting}`);
+    // core.info(`Hello, ${name}!`);
+    // core.info(`My boy: ${greeting}`);
 
     let filePath = './pom.xml'
 
-    const data = fs.readFileSync(filePath, 'utf8');
-    core.info(`Contenst =\n${data}`)
+    let path = '/project/version'
+    let replacement = '1.0.0'
 
-    const result = new XMLParser().parse(data)
-    core.info(`parse data:\n${result}`)
+    const xml = fs.readFileSync(filePath, 'utf8');
+    const doc = new DOMParser().parseFromString(xml);
 
-    const context = github.context;
-    core.info(`Event: ${context.eventName}`);
+    const nodes = xpath.select(path, doc);
 
 
-    core.setOutput('done', `${name}`);
+    if (nodes.length === 0) {
+      throw new Error(`No nodes found for expression: ${xPathExpression}`);
+    }
+
+    nodes.forEach((node) => {
+      node.textContent = replacement;
+    });
+
+
+
+
+
+
+    // const context = github.context;
+    // core.info(`Event: ${context.eventName}`);
+
+
+    // core.setOutput('done', `${name}`);
   } catch (error) {
     core.setFailed(`Error: ${error.message}`);
   }

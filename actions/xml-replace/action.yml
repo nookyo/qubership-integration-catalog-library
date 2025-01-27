@@ -1,10 +1,10 @@
 name: 'Xml Replace Action'
 description: 'Check a specified tag'
 inputs:
-  name:
+  path:
     description: ''
     required: true
-  greeting:
+  replacement:
     description: ''
     required: true
 
