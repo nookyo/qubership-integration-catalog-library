@@ -1,4 +1,4 @@
-# `commit-and-push`
+# Commit and Push Action
 
 **Category**: Source Code Management
 
