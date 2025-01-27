@@ -29,7 +29,7 @@ async function run() {
 
 
     if (nodes.length === 0) {
-      throw new Error(`No nodes found for expression: ${xPathExpression}`);
+      throw new Error(`No nodes found for expression: ${path}`);
     }
 
     nodes.forEach((node) => {
