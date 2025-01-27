@@ -9,11 +9,11 @@ function run() {
     const user = core.getInput('user') || 'tech';
     const commitMessage = core.getInput('commitMessage') || 'Update pom.xml';
 
-    execSync(`git config --global user.email "${email}"`);
-    execSync(`git config --global user.name "${user}"`);
+    execSync(`git config --global user.email "${email}"`, { stdio: 'inherit' });
+    execSync(`git config --global user.name "${user}"`, { stdio: 'inherit' });
     execSync(`git add .`);
-    execSync(`git commit -m "${commitMessage}"`);
-    execSync(`git push`);
+    execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+    execSync(`git push`, { stdio: 'inherit' });
 
     core.info(`Commit and push done!`);
 
