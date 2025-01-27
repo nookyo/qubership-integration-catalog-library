@@ -19,7 +19,7 @@ async function run() {
 
     let filePath = './pom.xml'
 
-    let path = '/project/version'
+    let path = '//project/properties/revision'
     let replacement = '1.0.0'
 
     const xml = fs.readFileSync(filePath, 'utf8');
