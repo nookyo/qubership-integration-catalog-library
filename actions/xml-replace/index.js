@@ -54,7 +54,9 @@ async function run() {
 
     await updateXml(filePath, path, newValue);
     await commitAndPush(filePath, commitMessage);
-    if(commit)
+    if(commit){
+      core.info(`Committing and pushing changes to the repository: ${commit}`);
+    }
 
 
     // core.setOutput('done', `${name}`);
