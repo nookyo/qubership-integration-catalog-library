@@ -1,15 +1,15 @@
-name: 'Xml Replace Action'
+name: 'Commit and Push'
 description: 'Check a specified tag'
 inputs:
-  path:
-    description: ''
-    required: true
-  newValue:
-    description: ''
-    required: true
-  commit:
-    description: ''
-    required: true
+  email:
+    description: 'Email'
+    required: false
+  user:
+    description: 'User'
+    required: false
+  commitMessage:
+    description: 'Commit Message'
+    required: false
 
 runs:
   using: 'node16'
