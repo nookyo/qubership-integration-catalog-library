@@ -23,6 +23,9 @@ async function run() {
     let replacement = '1.0.0'
 
     const xml = fs.readFileSync(filePath, 'utf8');
+
+    core.info(`Original XML: ${xml}`);
+
     const doc = new DOMParser().parseFromString(xml);
 
     const nodes = xpath.select(path, doc);
