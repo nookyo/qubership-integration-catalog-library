@@ -9,11 +9,14 @@ async function run() {
     const user = core.getInput('user') || 'tech';
     const commitMessage = core.getInput('commitMessage') || 'Update pom.xml';
 
+    
     exec(`git config --global user.email "${email}"`);
     exec(`git config --global user.name "${user}"`);
     exec(`git add .`);
     exec(`git commit -m "${commitMessage}"`);
     exec(`git push`);
+
+    core.info(`Commit and push done!`);
 
   } catch (error) {
     core.setFailed(`Error: ${error.message}`);
