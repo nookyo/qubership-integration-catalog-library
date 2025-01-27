@@ -35,10 +35,12 @@ async function run() {
     });
 
 
+    const serialized = new XMLSerializer().serializeToString(doc);
+    fs.writeFileSync(filePath, serialized);
 
 
-
-
+    const xml2 = fs.readFileSync(filePath, 'utf8');
+    core.info(`Updated XML: ${xml2}`);
     // const context = github.context;
     // core.info(`Event: ${context.eventName}`);
 
