@@ -5,8 +5,8 @@ const { execSync } = require('child_process');
 async function run() {
   try {
 
-    const user = core.getInput('author_name');
-    const email = core.getInput('author_email');
+    const user = core.getInput('author_name') || 'github-actions'; ;
+    const email = core.getInput('author_email') || 'tech@qubership.com';
     const commitMessage = core.getInput('commit_message') || 'Automated commit';
 
     core.info(`Using email: ${email}`);
