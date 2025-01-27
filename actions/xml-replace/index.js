@@ -17,9 +17,13 @@ async function run() {
     // core.info(`Hello, ${name}!`);
     // core.info(`My boy: ${greeting}`);
 
+    const select = xpath.useNamespaces({
+      p: 'http://maven.apache.org/POM/4.0.0'
+    });
+
     let filePath = './pom.xml'
 
-    let path = '//project/properties/revision'
+    let path = '//p:project/p:properties/p:revision'
     let replacement = '1.0.0'
 
     const xml = fs.readFileSync(filePath, 'utf8');
@@ -28,7 +32,7 @@ async function run() {
 
     const doc = new DOMParser().parseFromString(xml);
 
-    const nodes = xpath.select(path, doc);
+    const nodes = select(path, doc);
 
 
     if (nodes.length === 0) {
