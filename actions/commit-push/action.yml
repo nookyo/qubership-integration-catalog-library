@@ -7,6 +7,9 @@ inputs:
   newValue:
     description: ''
     required: true
+  commit:
+    description: ''
+    required: true
 
 runs:
   using: 'node16'
