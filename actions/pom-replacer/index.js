@@ -14,7 +14,6 @@ async function updateXml(filePath, path, newValue) {
   });
 
   const xml = fs.readFileSync(filePath, 'utf8');
-  // core.info(`Original XML: ${xml}`);
 
   const doc = new DOMParser().parseFromString(xml);
 
@@ -40,12 +39,12 @@ async function run() {
   try {
 
     const filePath = core.getInput('filePath');
-    const path = core.getInput('path');
-    const newValue = core.getInput('newValue');
+    const path = core.getInput('path')|| '//p:project/p:properties/p:revision';
+    //const newValue = core.getInput('newValue') || '1.0.1';
 
     // const filePath = 'pom.xml';
     // const path = '//p:project/p:properties/p:revision';
-    // const newValue = '1.0.0';
+    const newValue = '1.0.1';
 
     await updateXml(filePath, path, newValue);
 

@@ -1,6 +1,9 @@
-name: 'Xml Replace Action'
+name: 'Pom replace value action'
 description: 'Check a specified tag'
 inputs:
+  filePath:
+    description: 'Path to the file'
+    required: true
   path:
     description: ''
     required: true

@@ -30,4 +30,4 @@ jobs:
         with:
           path: ${{ inputs.path }}
           newValue: ${{ inputs.newValue }}
-          commit: ${{ inputs.commit }}
+          filePath: "./pom.xml"
