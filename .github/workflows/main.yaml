@@ -3,20 +3,10 @@ name: Custom Action
 on:
   workflow_dispatch:
     inputs:
-      path:
-          description: 'Path to the file'
-          default: 'pom.xml'
-          required: true
       newValue:
           description: 'Replacement string'
           default: '1.0.0'
           required: true
-      commit:
-          description: 'Commit changes'
-          type: boolean
-          default: false
-          required: false
-
 
 jobs:
   my-action:
@@ -28,6 +18,5 @@ jobs:
       - name: Run my Action
         uses: ./actions/xml-replace
         with:
-          path: ${{ inputs.path }}
           newValue: ${{ inputs.newValue }}
           filePath: "./pom.xml"
