@@ -1,16 +1,24 @@
 name: 'Commit and Push'
-description: 'Check a specified tag'
+description: 'Automatically commits and pushes changes to the repository.'
+
 inputs:
   author_name:
-    description: 'Author Name'
+    description: 'The name of the commit author. Defaults to `github-actions`.'
     required: false
+    default: 'github-actions'
   author_email:
-    description: 'Author Email'
+    description: 'The email of the commit author. Defaults to `tech@qubership.com`.'
     required: false
+    default: 'tech@qubership.com'
   commit_message:
-    description: 'Commit Message'
+    description: 'The commit message. Defaults to `Automated commit`.'
     required: false
+    default: 'Automated commit'
 
 runs:
   using: 'node16'
   main: 'dist/index.js'
+
+branding:
+  icon: 'git-commit'
+  color: 'green'
