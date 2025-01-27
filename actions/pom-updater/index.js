@@ -35,6 +35,7 @@ async function run() {
     core.info(`Updated file: ${filePath}`);
     //const updatedXml = fs.readFileSync(filePath, 'utf8');
     //core.info(`Updated XML:\n${updatedXml}`);
+
   } catch (error) {
     core.setFailed(`Action failed: ${error.message}`);
   }
