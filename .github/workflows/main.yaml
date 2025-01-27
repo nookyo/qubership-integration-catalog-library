@@ -19,3 +19,6 @@ jobs:
         uses: ./actions/pom-updater
         with:
           newValue: ${{ inputs.newValue }}
+          filePath: 'pom.xml'
+      - name: Commit and Push
+        uses: ./actions/commit-and-push
