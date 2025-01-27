@@ -40,11 +40,11 @@ async function run() {
 
     const filePath = core.getInput('filePath');
     const path = core.getInput('path')|| '//p:project/p:properties/p:revision';
-    //const newValue = core.getInput('newValue') || '1.0.1';
+    const newValue = core.getInput('newValue');
 
     // const filePath = 'pom.xml';
     // const path = '//p:project/p:properties/p:revision';
-    const newValue = '1.0.1';
+    // const newValue = '1.0.1';
 
     await updateXml(filePath, path, newValue);
 
