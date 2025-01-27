@@ -32082,6 +32082,14 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 5370:
+/***/ ((module) => {
+
+module.exports = eval("require")("xpath");
+
+
+/***/ }),
+
 /***/ 2613:
 /***/ ((module) => {
 
@@ -33999,6 +34007,9 @@ const github = __nccwpck_require__(5355);
 const { XMLParser, XMLBuilder } = __nccwpck_require__(820);
 const fs = __nccwpck_require__(9896)
 
+const xpath = __nccwpck_require__(5370);
+const document = new DOMParser().parseFromString(content);
+
 
 
 async function run() {
@@ -34017,16 +34028,9 @@ async function run() {
     core.info(`Contenst =\n${data}`)
 
     const result = new XMLParser().parse(data)
+    core.info(`parse data:\n${result}`)
 
-    const sections =  result.root.section;
 
-    const sectionName = 'version'
-
-    const section = Array.isArray(sections)
-    ? sections.find(s => s.name === sectionName)
-    : sections.name === sectionName
-    ? sections
-    : null;
     console.log(`Значение секции "${section}`);
 
     const context = github.context;
