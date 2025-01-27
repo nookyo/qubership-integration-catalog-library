@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const { DOMParser, XMLSerializer } = require('xmldom');
 const xpath = require('xpath');
 const fs = require('fs');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 
 
 
@@ -35,7 +35,13 @@ async function updateXml(filePath, path, newValue) {
   core.info(`Updated XML: ${updatedXml}`);
 }
 
-
+function commitAndPush(email, user, commitMessage){
+  exec(`git config --global user.email "${email}"`);
+  exec(`git config --global user.name "${user}"`);
+  exec(`git add .`);
+  exec(`git commit -m "${commitMessage}"`);
+  exec(`git push`);
+}
 
 async function run() {
   try {
@@ -44,16 +50,17 @@ async function run() {
     // const path = core.getInput('path');
     // const newValue = core.getInput('newValue');
     const commit = core.getInput('commit', { trimWhitespace: true }) === 'true';
-    // const email = core.getInput('email');
-    // const user = core.getInput('user');
+    const email = core.getInput('email');
+    const user = core.getInput('user');
+    const commitMessage = core.getInput('commitMessage');
 
-    const filePath = './pom.xml';
+    const filePath = 'pom.xml';
     const path = '//p:project/p:properties/p:revision';
     const newValue = '1.0.0';
 
 
     await updateXml(filePath, path, newValue);
-    
+
     if(commit){
       core.info(`Committing and pushing changes to the repository: ${commit}`);
       // await commitAndPush(filePath, commitMessage);
