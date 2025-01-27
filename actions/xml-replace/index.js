@@ -43,20 +43,19 @@ async function run() {
     // const filePath = core.getInput('filePath');
     // const path = core.getInput('path');
     // const newValue = core.getInput('newValue');
-    // const commit = core.getInput('commit');
+    const commit = core.getInput('commit', { trimWhitespace: true }) === 'true';
     // const email = core.getInput('email');
     // const user = core.getInput('user');
-
-
-    // core.info(`Hello, ${name}!`);
-    // core.info(`My boy: ${greeting}`);
 
     const filePath = './pom.xml';
     const path = '//p:project/p:properties/p:revision';
     const newValue = '1.0.0';
 
-    // Вызываем нашу функцию
+
     await updateXml(filePath, path, newValue);
+    await commitAndPush(filePath, commitMessage);
+    if(commit)
+
 
     // core.setOutput('done', `${name}`);
   } catch (error) {

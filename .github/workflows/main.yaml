@@ -7,10 +7,15 @@ on:
           description: 'Path to the file'
           default: 'pom.xml'
           required: true
-      replacement:
+      newValue:
           description: 'Replacement string'
           default: '1.0.0'
           required: true
+      commit:
+          description: 'Commit changes'
+          type: boolean
+          default: false
+          required: false
 
 
 jobs:
@@ -24,4 +29,5 @@ jobs:
         uses: ./actions/xml-replace
         with:
           path: ${{ inputs.path }}
-          replacement: ${{ inputs.replacement }}
+          newValue: ${{ inputs.newValue }}
+          commit: ${{ inputs.commit }}

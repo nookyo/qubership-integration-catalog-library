@@ -4,7 +4,10 @@ inputs:
   path:
     description: ''
     required: true
-  replacement:
+  newValue:
+    description: ''
+    required: true
+  commit:
     description: ''
     required: true
 
