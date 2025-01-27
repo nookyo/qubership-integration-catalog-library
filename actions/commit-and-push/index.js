@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 function run() {
   try {
@@ -9,11 +9,11 @@ function run() {
     const user = core.getInput('user') || 'tech';
     const commitMessage = core.getInput('commitMessage') || 'Update pom.xml';
 
-    exec(`git config --global user.email "${email}"`);
-    exec(`git config --global user.name "${user}"`);
-    exec(`git add .`);
-    exec(`git commit -m "${commitMessage}"`);
-    exec(`git push`);
+    execSync(`git config --global user.email "${email}"`);
+    execSync(`git config --global user.name "${user}"`);
+    execSync(`git add .`);
+    execSync(`git commit -m "${commitMessage}"`);
+    execSync(`git push`);
 
     core.info(`Commit and push done!`);
 
