@@ -3,6 +3,9 @@ const github = require('@actions/github');
 const { XMLParser, XMLBuilder } = require('fast-xml-parser');
 const fs = require('fs')
 
+const xpath = require('xpath');
+const document = new DOMParser().parseFromString(content);
+
 
 
 async function run() {
@@ -21,16 +24,9 @@ async function run() {
     core.info(`Contenst =\n${data}`)
 
     const result = new XMLParser().parse(data)
+    core.info(`parse data:\n${result}`)
 
-    const sections =  result.root.section;
 
-    const sectionName = 'version'
-
-    const section = Array.isArray(sections)
-    ? sections.find(s => s.name === sectionName)
-    : sections.name === sectionName
-    ? sections
-    : null;
     console.log(`Значение секции "${section}`);
 
     const context = github.context;
