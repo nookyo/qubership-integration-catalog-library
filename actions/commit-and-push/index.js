@@ -11,7 +11,7 @@ function run() {
 
     execSync(`git config --global user.email "${email}"`, { stdio: 'inherit' });
     execSync(`git config --global user.name "${user}"`, { stdio: 'inherit' });
-    execSync(`git add .`);
+    execSync(`git add .`, { stdio: 'inherit' });
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     execSync(`git push`, { stdio: 'inherit' });
 
