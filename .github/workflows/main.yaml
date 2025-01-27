@@ -2,6 +2,16 @@ name: Custom Action
 
 on:
   workflow_dispatch:
+    inputs:
+      path:
+          description: 'Path to the file'
+          default: 'pom.xml'
+          required: true
+      replacement:
+          description: 'Replacement string'
+          default: '1.0.0'
+          required: true
+
 
 jobs:
   my-action:
@@ -13,5 +23,5 @@ jobs:
       - name: Run my Action
         uses: ./actions/xml-replace
         with:
-          name: 'Fucker'
-          greeting: 'my boy'
+          path: ${{ inputs.path }}
+          replacement: ${{ inputs.replacement }}
