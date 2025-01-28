@@ -1,0 +1,82 @@
+name: 'Poetry PyPi publisher'
+description: ''
+
+inputs:
+  python_version:
+    description: 'The version of Python to use'
+    required: true
+    default: '3.11'
+  poetry_version_options:
+    description: 'Options for patching version (e.g., "patch", "minor")'
+    required: false
+    default: ''
+  version:
+    description: 'Specific version to set for the package'
+    required: false
+    default: ''
+  poetry_build_params:
+    description: 'Additional parameters for poetry build'
+    required: false
+    default: ''
+  pytest_run:
+    description: 'Run tests with pytest'
+    required: false
+    default: 'false'
+  pytest_params:
+    description: 'Parameters for pytest'
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python_version: ${{ inputs.python_version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --user pipx
+        pipx install poetry
+
+    - name: Remove dist
+      shell: bash
+      run: rm -rf dist/
+
+    - name: AutoPatch version
+      shell: bash
+      if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
+      run: poetry version ${{ inputs.poetry_version_options }}
+
+    - name: Set specific version
+      shell: bash
+      if: ${{ inputs.version != '' }}
+      run: poetry version ${{ inputs.version }}
+
+    - name: Build package
+      shell: bash
+      run: poetry build ${{ inputs.poetry_build_params }}
+
+    - name: Validate build
+      shell: bash
+      run: |
+        ls -l dist/
+        echo "Build validation complete."
+
+    - name: Run tests
+      shell: bash
+      if: ${{ inputs.pytest_run == 'true' }}
+      run: |
+        poetry install
+        poetry run pytest ${{ inputs.pytest_params }}
+
+    - name: Publish to PyPi
+      shell: bash
+      run: |
+        poetry config pypi-token.pypi $PYPI_TOKEN
+        poetry publish --no-interaction --repository-url https://upload.pypi.org/legacy/
+      env:
+        PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
