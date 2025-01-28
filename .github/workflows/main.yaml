@@ -3,7 +3,7 @@ name: Custom Action
 on:
   workflow_dispatch:
     inputs:
-      newValue:
+      new_value:
           description: 'Replacement string'
           default: '1.0.0'
           required: true
@@ -18,8 +18,7 @@ jobs:
       - name: Run my Action
         uses: ./actions/pom-updater
         with:
-          newValue: ${{ inputs.newValue }}
-          filePath: 'pom.xml'
+          new_value: ${{ inputs.new_value }}
 
       - name: Commit and Push
         uses: ./actions/commit-and-push
