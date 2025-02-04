@@ -5,15 +5,15 @@ on:
     inputs:
       image_name:
         description: 'Name of the Docker image (without ghcr.io/)'
-        required: true
+        # required: true
         type: string
       dockerfile_path:
         description: 'Path to the Dockerfile'
-        required: true
+        # required: true
         type: string
       context_path:
         description: 'Path to the build context'
-        required: true
+        # required: true
         type: string
       push:
         description: 'Push the image to GHCR'
