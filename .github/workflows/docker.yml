@@ -63,7 +63,7 @@ jobs:
             type=semver,pattern={{major}}
 
       - name: Check Dockerfile existence
-        run: ls -la ./Dockerfile
+        run: ls -la
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
