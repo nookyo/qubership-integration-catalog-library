@@ -5,6 +5,7 @@ on:
     inputs:
       image_name:
         description: 'Name of the Docker image (without ghcr.io/)'
+        default: qubership-catalog-library
         # required: true
         type: string
       dockerfile_path:
@@ -66,7 +67,7 @@ jobs:
         with:
           context: ${{ inputs.context_path }}
           #file: ${{ inputs.dockerfile_path }}
-          file: Dockerfile
+          file: ./Dockerfile
           push: ${{ inputs.push }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
