@@ -1,0 +1,63 @@
+name: PyPi Publisher
+
+on:
+    workflow_dispatch:
+        inputs:
+            app_version:
+                description: 'Version to publish'
+                default: ''
+                required: false
+            poetry_version_options:
+                description: 'Options for poetry version command'
+                default: ''
+                required: false
+            python-version:
+                description: 'Python version to use'
+                default: '3.11'
+                required: false
+            poetry_build_params:
+                description: 'Parameters for poetry build command'
+                default: ''
+                required: false
+            pytest_run:
+                description: 'Run tests with pytest'
+                default: 'false'
+                required: false
+            pytest_params:
+                description: 'Parameters for pytest'
+                default: ''
+
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Debug variables
+              run: |
+                  echo version = ${{ inputs.app_version }}
+                  echo poetry_version_options = ${{ inputs.poetry_version_options }}
+                  echo python-version = ${{ inputs.python-version }}
+                  echo poetry_build_params = ${{ inputs.poetry_build_params }}
+                  echo pytest_run = ${{ inputs.pytest_run }}
+                  echo pytest_params = ${{ inputs.pytest_params }}
+                  echo PYPI_API_TOKEN = ${{ env.PYPI_API_TOKEN }}
+
+                  echo "Environment:"
+                  env
+
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ inputs.python-version }}
+
+            - name: Python Publisher
+              uses: ./actions/python-publisher
+              with:
+                app_version: ${{ inputs.app_version }}
+                poetry_version_options: ${{ inputs.poetry_version_options }}
+                poetry_build_params: ${{ inputs.poetry_build_params }}
+                pytest_run: ${{ inputs.pytest_run }}
+                pytest_params: ${{ inputs.pytest_params }}
+

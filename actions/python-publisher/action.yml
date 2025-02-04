@@ -2,16 +2,12 @@ name: 'Poetry PyPi publisher'
 description: ''
 
 inputs:
-  python_version:
-    description: 'The version of Python to use'
-    required: true
-    default: '3.11'
   poetry_version_options:
     description: 'Options for patching version (e.g., "patch", "minor")'
     required: false
     default: ''
-  version:
-    description: 'Specific version to set for the package'
+  app_version:
+    description: 'Specific application version to set for the package'
     required: false
     default: ''
   poetry_build_params:
@@ -30,11 +26,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python_version: ${{ inputs.python_version }}
-
     - name: Install dependencies
       shell: bash
       run: |
